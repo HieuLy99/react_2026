@@ -7,3 +7,15 @@ npm i react-router-dom
 npm i -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
+## cài axios
+```
+npm install axios
+```
+## cài react query
+```
+npm install @tanstack/react-query
+```
+## cài đặt npm i @tanstack/react-query-devtools
+```
+npm i @tanstack/react-query-devtools
+```
