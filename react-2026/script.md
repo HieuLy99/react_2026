@@ -19,3 +19,7 @@ npm install @tanstack/react-query
 ```
 npm i @tanstack/react-query-devtools
 ```
+## hiển thị svg 
+```
+npm i -D vite-plugin-svgr
+```

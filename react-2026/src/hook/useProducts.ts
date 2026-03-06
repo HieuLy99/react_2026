@@ -13,3 +13,16 @@ export function useProducts() {
     retry: false, // Tắt retry để dễ debug lỗi
   });
 }
+
+
+export function useGetProductDetail() {
+//   const { params } = useProductsParams();
+//   console.log('params in useProducts', params);
+  
+  return useQuery({
+    queryKey: ["products"], // Auto refetch khi params thay đổi
+    queryFn: () => getProducts(),
+    staleTime: 1000 * 60 * 5, // 5 phút
+    retry: false, // Tắt retry để dễ debug lỗi
+  });
+}
