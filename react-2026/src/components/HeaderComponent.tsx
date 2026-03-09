@@ -40,7 +40,7 @@ export default function HeaderComponent() {
   }, [data, searchText]);
 
   const handleViewDetailProduct = (id: number) => {
-    setSearchText('');
+    setSearchText("");
     navigate(`/products?id=${id}`);
   };
 
@@ -68,18 +68,21 @@ export default function HeaderComponent() {
         </div>
       </div>
       <div className="flex-1 flex flex-row justify-end content-center gap-2">
-        <button
-          className="flex-1 justify-end content-center flex items-center"
-          onClick={() => navigate("/login")}
-        >
-          <div className="flex-1 flex content-end">
+        <button className="flex-1 justify-end content-center flex items-center">
+          <div
+            className="flex-1 flex content-end"
+            onClick={() => navigate("/cart")}
+          >
             <img
               src={shoppingCard}
               alt="login"
               className="h-8 w-8 flex flex-1 justify-end"
             />
           </div>
-          <div className="flex-1 flex content-start">
+          <div
+            className="flex-1 flex content-start"
+            onClick={() => navigate("/login")}
+          >
             <img
               src={acc}
               alt="login"

@@ -6,7 +6,7 @@ export default function ProtectedRoute() {
   const location = useLocation();
 
   // eslint-disable-next-line no-constant-condition
-  if (true) {
+  if (false) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
