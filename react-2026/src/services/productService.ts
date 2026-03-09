@@ -20,6 +20,7 @@ export async function addNewProduct(
 
 export async function getProductById(id: number): Promise<Product> {
   const { data } = await https.get(`/products/${id}`);
+console.log("data in getProductById", data);
   return data;
 }
 

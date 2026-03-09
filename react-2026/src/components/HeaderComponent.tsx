@@ -40,6 +40,7 @@ export default function HeaderComponent() {
   }, [data, searchText]);
 
   const handleViewDetailProduct = (id: number) => {
+    setSearchText('');
     navigate(`/products?id=${id}`);
   };
 

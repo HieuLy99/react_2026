@@ -23,3 +23,7 @@ npm i @tanstack/react-query-devtools
 ```
 npm i -D vite-plugin-svgr
 ```
+## cài đặt npm i react-toastify
+```
+npm i react-toastify
+```

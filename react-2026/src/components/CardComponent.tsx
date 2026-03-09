@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import type { Product } from "../pages/page.type";
 
 export default function CardComponent({
@@ -7,6 +8,8 @@ export default function CardComponent({
   product: Product;
   key: number;
 }) {
+
+  const navigate = useNavigate();
 
   const displayStar = (rate: number) => {
     const fullStars = Math.round(rate);
@@ -36,6 +39,9 @@ export default function CardComponent({
     <div
       key={key}
       className="border p-4 rounded-lg shadow-md mb-4 mt-4 flex flex-col w-50"
+      onClick={() => {
+        navigate(`/products?id=${product.id}`);
+      }}
     >
       <div className="w-full flex flex-col items-center h-50">
         <div className=" w-30 overflow-hidden bg-black flex justify-center-safe align-items-center">

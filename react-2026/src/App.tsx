@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { lazy, Suspense } from "react";
+import { ToastContainer } from 'react-toastify';
 import ProtectedRoute from "./auth/ProtectedRoute";
 import MainLayout from "./layout/MainLayout";
 import { ProductsParamsProvider } from "./context/ProductsParamsContext";
@@ -34,6 +35,7 @@ function App() {
         </Routes>
       </Suspense>
       <ReactQueryDevtools initialIsOpen={false} position={'bottom'} />
+      <ToastContainer position="bottom-right"/>
     </BrowserRouter>
   );
 }
