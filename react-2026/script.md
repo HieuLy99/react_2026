@@ -27,3 +27,7 @@ npm i -D vite-plugin-svgr
 ```
 npm i react-toastify
 ```
+## cài đặt npx shadcn@latest init
+```
+npx shadcn@latest init
+```
