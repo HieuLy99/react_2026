@@ -30,7 +30,11 @@ function App() {
             <Route path="/products" element={<ProductDetail />} />
             <Route element={<ProtectedRoute />}>
               <Route path="dashboard/*" element={<Dashboard />} />
-              <Route path="cart/*" element={<Cart />} />
+              <Route path="cart/" element={<Cart />}>
+                <Route path="shopping-cart" element={<Dashboard />} />
+                <Route path="shipping-details" element={<Dashboard />} />
+                <Route path="payment-option" element={<Dashboard />} />
+              </Route>
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />

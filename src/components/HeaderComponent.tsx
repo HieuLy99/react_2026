@@ -71,7 +71,7 @@ export default function HeaderComponent() {
         <button className="flex-1 justify-end content-center flex items-center">
           <div
             className="flex-1 flex content-end"
-            onClick={() => navigate("/cart")}
+            onClick={() => navigate("/cart?part=shopping-cart")}
           >
             <img
               src={shoppingCard}
