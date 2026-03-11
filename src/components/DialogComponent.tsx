@@ -1,40 +1,57 @@
-import { Button } from "@/components/ui/button"
+import * as React from "react";
 import {
   Dialog,
-  DialogClose,
+  DialogTrigger,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "./ui/button";
 
-export function DialogDemo() {
+type AppDialogProps = {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  trigger?: React.ReactNode;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  children: React.ReactNode;
+  className?: string;
+};
+
+export function AppDialog({
+  open,
+  onOpenChange,
+  trigger,
+  title,
+  description,
+  children,
+  className,
+}: AppDialogProps) {
   return (
-    <Dialog>
-      <DialogTrigger render={<Button variant="outline">Sticky Footer</Button>} />
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Sticky Footer</DialogTitle>
-          <DialogDescription>
-            This dialog has a sticky footer that stays visible while the content
-            scrolls.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="-mx-4 no-scrollbar max-h-[50vh] overflow-y-auto px-4">
-          {Array.from({ length: 1 }).map((_, index) => (
-            <p key={index} className="mb-4 leading-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            </p>
-          ))}
-        </div>
-        <DialogFooter>
-          <DialogClose render={<Button variant="outline">Close</Button>} />
-          <DialogClose render={<Button variant="outline">cancel</Button>} />
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      {trigger ? <DialogTrigger>{trigger}</DialogTrigger> : null}
 
+      <DialogContent className={className}>
+        {(title || description) && (
+          <DialogHeader>
+            {title ? <DialogTitle>{title}</DialogTitle> : null}
+            {description ? (
+              <DialogDescription>{description}</DialogDescription>
+            ) : null}
+          </DialogHeader>
+        )}
+
+        {children}
+
+        <DialogFooter className="sm:justify-start">
+          <DialogClose>
+            <Button type="button">Close</Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

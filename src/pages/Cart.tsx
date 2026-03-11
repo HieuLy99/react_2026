@@ -4,7 +4,8 @@ import cancel from "../assets/cancel.svg";
 import deleteIcon from "../assets/delete.svg";
 import noSymbol from "../assets/no-symbol.svg";
 import lock from "../assets/lock.svg";
-import { DialogDemo } from "@/components/DialogComponent";
+import { AlertDialogSmallCommon } from "@/components/AlertDialogComponent";
+import { useCarts } from "@/hook/useCart";
 
 export default function Cart() {
   const mockCart = [
@@ -41,10 +42,15 @@ export default function Cart() {
     },
   ];
 
+  const { data, isLoading, error } = useCarts();
+  console.log("data in cart", data, isLoading, error );
+
   const [cartItems, setCartItems] = useState(mockCart);
+  const [open, setOpen] = useState(false);
 
   const handleCancelOrder = () => {
     setCartItems([]);
+    setOpen(false);
   };
 
   const handleRemoveCart = (id: number) => {
@@ -129,18 +135,27 @@ export default function Cart() {
                 />
                 <span>100% no-risk money back</span>
               </div>
-              <div
-                className="flex justify-end items-center align-middle cursor-pointer"
-                onClick={() => handleCancelOrder()}
-              >
-                <img
-                  src={cancel}
-                  alt=""
-                  className="cursor-pointer w-5 h-5 pr-1 "
-                />
-                <span className="underline text-red-500 text-sm">
-                  Cancel order
-                </span>
+              <div className="flex justify-end items-center align-middle cursor-pointer">
+                {cartItems.length > 0 && (
+                  <AlertDialogSmallCommon
+                    buttonShow={
+                      <div className="flex justify-end items-center align-middle cursor-pointer">
+                        <img
+                          src={cancel}
+                          alt=""
+                          className="cursor-pointer w-5 h-5 pr-1 "
+                        />
+                        <span className="underline text-red-500 text-sm">
+                          Cancel order
+                        </span>
+                      </div>
+                    }
+                    alertDialogTitle="Are you sure you want to cancel this order?"
+                    open={open}
+                    onOpenChange={setOpen}
+                    onConfirm={() => handleCancelOrder()}
+                  ></AlertDialogSmallCommon>
+                )}
               </div>
             </div>
           </div>
@@ -168,9 +183,7 @@ export default function Cart() {
             <div>Payment method</div>
             <div>Review order</div>
           </div>
-          <div className="note-block">
-            <DialogDemo />
-          </div>
+          <div className="note-block"></div>
         </div>
       </div>
     </div>
