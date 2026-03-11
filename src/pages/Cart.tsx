@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import cancel from "../assets/cancel.svg";
-import deleteIcon from "../assets/delete.svg";
 import noSymbol from "../assets/no-symbol.svg";
 import lock from "../assets/lock.svg";
 import { AlertDialogSmallCommon } from "@/components/AlertDialogComponent";
 import { useCarts } from "@/hook/useCart";
+import CardBlockComponent from "@/components/CardBlockComponent";
+import { AvatarGroupCount } from "@/components/ui/avatar";
 
 export default function Cart() {
   const mockCart = [
@@ -17,7 +18,7 @@ export default function Cart() {
       description: "This is product 1",
     },
     {
-      id: 3243243243,
+      id: 32432413243,
       productName: "Product 2",
       quantity: 1,
       price: 20,
@@ -57,56 +58,34 @@ export default function Cart() {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const CardBlack = ({ item }: any) => {
-    return (
-      <div
-        key={item.id}
-        className="cart-item flex  p-4 mb-4 bg-white rounded-lg shadow-lg  font-light"
-      >
-        <div className="flex-3">
-          <div className="font-medium">
-            {item.productName}
-            <span className="text-xs font-thin text-blue-500">
-              {" "}
-              [ {item.id} ]
-            </span>
-          </div>
-          <div className="text-sm text-gray-500">{item.description}</div>
-          <div>3333</div>
-        </div>
-        <div className="flex-1 flex justify-start">
-          <div className="flex items-center border rounded">
-            <button className="px-3 py-1">-</button>
-            <input type="number" className="w-12 text-center outline-none" />
-            <button className="px-3 py-1">+</button>
-          </div>
-        </div>
-        <div className="flex-1 flex items-center aligns-center">
-          ${item.price}
-        </div>
+  console.log("===> cartItems", cartItems);
 
-        <div
-          className="flex-1 flex justify-end aligns-center cursor-pointer items-center"
-          onClick={() => handleRemoveCart(item.id)}
-        >
-          <img
-            src={deleteIcon}
-            alt=""
-            className="cursor-pointer w-5 h-5 pr-1 "
-          />
-        </div>
-      </div>
-    );
-  };
+  const stepsList = [
+    { name: "Shopping cart", active: true },
+    { name: "Shipping details", active: false },
+    { name: "Payment option", active: false },
+  ];
+
   return (
     <div className="p-8 bg-gray-50">
-      <div className="items-center flex justify-center pb-8">
-        1 shopping cart - 2 shopping details 3 - Payment option
+      <div className="items-center flex justify-center pb-10 pt-6">
+        {stepsList.map((item, index) => (
+          <div key={index} className="flex items-center ">
+            <AvatarGroupCount className="mr-2 ml-4" active={item.active}>
+              {index + 1}
+            </AvatarGroupCount>{" "}
+            <span className="mr-4">{item.name}</span>
+            {index !== stepsList.length - 1 && (
+              <div className="w-32 h-0.5 bg-gray-300 rounded-full"></div>
+            )}
+          </div>
+        ))}
       </div>
       <div className="flex gap-x-8">
         <div className="flex-3  ">
           <div className="shopping-cart-block bg-white p-8 rounded-lg mb-8">
             <div>Shopping Cart</div>
+            <hr className="mt-2 mb-1" />
             <div className="flex pb-2 pt-4 pl-4 pr-4 text-gray-500 ">
               <div className="flex-3">Product </div>
               <div className="flex-1">Quantity</div>
@@ -123,7 +102,12 @@ export default function Cart() {
                   Your cart is empty
                 </div>
               ) : (
-                cartItems.map((item) => <CardBlack item={item} />)
+                cartItems.map((item) => (
+                  <CardBlockComponent
+                    item={item}
+                    handleRemoveCart={handleRemoveCart}
+                  />
+                ))
               )}
             </div>
             <div className="total-price-block flex text-sm ">
@@ -178,10 +162,12 @@ export default function Cart() {
         </div>
         <div className="flex-1">
           <div className="proced-block border border-indigo-600 p-4 mb-4 bg-white rounded-lg shadow-lg ">
-            <div>Proceed to checkout</div>
-            <div>Shipping address</div>
-            <div>Payment method</div>
-            <div>Review order</div>
+            <div className="border p-4 mb-4">Proceed to checkout</div>
+            <div className="proced-block-content border p-4">
+              <div>Shipping address</div>
+              <div>Payment method</div>
+              <div>Review order</div>
+            </div>
           </div>
           <div className="note-block"></div>
         </div>
