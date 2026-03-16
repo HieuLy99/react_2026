@@ -1,4 +1,4 @@
-import React from "react";
+import { Button } from "./ui/button";
 
 export default function ProceedCheckoutComponent() {
   return (
@@ -6,12 +6,21 @@ export default function ProceedCheckoutComponent() {
       <div className="proced-block border border-indigo-600 p-4 mb-4 bg-white rounded-lg shadow-lg ">
         <div className="border p-4 mb-4 rounded-md">Proceed to checkout</div>
         <div className="proced-block-content border p-4 rounded-md">
-          <div>Shipping address</div>
-          <div>Payment method</div>
-          <div>Review order</div>
+          <div>Order summary</div>
+          <div>Sub total : ....</div>
+          <div>Shipping : ....</div>
+          <div>tax : ....</div>
+          <div>Total : ....</div>
+        </div>
+        <div>
+          <Button variant='default' className="w-full mt-4">
+            Proceed to checkout
+          </Button>
         </div>
       </div>
-      <div className="note-block"></div>
+      <div className="note-block">
+        Proceed to checkout 123
+      </div>
     </>
   );
 }
