@@ -31,3 +31,7 @@ npm i react-toastify
 ```
 npx shadcn@latest init
 ```
+## cài đặt npm i formik yup
+```
+npm i formik yup
+```
