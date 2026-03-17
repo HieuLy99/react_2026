@@ -76,6 +76,10 @@ export default function Cart() {
     return stepItem ? stepItem.name : "";
   };
 
+  const handleProceedCheckout = () => {
+    navigate("?part=payment-option");
+  };
+
   const isShoppingCart = cartPart === "shopping-cart";
   const isShippingDetails = cartPart === "shipping-details";
   const isPaymentOption = cartPart === "payment-option";
@@ -127,7 +131,7 @@ export default function Cart() {
           {isPaymentOption && <div>Payment option</div>}
         </div>
         <div className="flex-1">
-          <ProceedCheckoutComponent />
+          <ProceedCheckoutComponent  handleProceedCheckout={handleProceedCheckout}/>
         </div>
       </div>
     </div>

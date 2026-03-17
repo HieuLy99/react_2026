@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "./ui/button";
 
-export default function ProceedCheckoutComponent() {
+export default function ProceedCheckoutComponent({
+  handleProceedCheckout,
+}: any) {
   return (
     <>
       <div className="proced-block border border-indigo-600 p-4 mb-4 bg-white rounded-lg shadow-lg ">
@@ -13,14 +16,16 @@ export default function ProceedCheckoutComponent() {
           <div>Total : ....</div>
         </div>
         <div>
-          <Button variant='default' className="w-full mt-4">
+          <Button
+            variant="default"
+            className="w-full mt-4"
+            onClick={() => handleProceedCheckout()}
+          >
             Proceed to checkout
           </Button>
         </div>
       </div>
-      <div className="note-block">
-        Proceed to checkout 123
-      </div>
+      <div className="note-block">Proceed to checkout 123</div>
     </>
   );
 }
