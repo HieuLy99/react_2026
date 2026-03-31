@@ -39,7 +39,7 @@ export default function Home() {
       {isError && <div>Error loading products.</div>}
       <div className="flex flex-wrap gap-4 justify-center items-center p-8">
         {data?.map((product: Product) => (
-          <CardComponent key={product.id} product={product}/>
+          <CardComponent key={product.id} product={product} />
         ))}
       </div>
     </div>

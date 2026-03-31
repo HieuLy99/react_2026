@@ -7,7 +7,7 @@ export default function ShippingDetailsComponent() {
   return (
     <>
       <Formik
-        initialValues={{ email: "", password: "" , address: ""}}
+        initialValues={{ email: "", password: "", address: "" }}
         validationSchema={schema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           console.log("submit:", values);

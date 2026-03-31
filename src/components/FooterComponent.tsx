@@ -29,7 +29,11 @@ export default function FooterComponent() {
   return (
     <div className="flex w-full justify-center items-center p-4 ">
       {listTech.map((item) => (
-        <a key={item.name} href={item.link} className="text-blue-500 mr-4 flex items-center">
+        <a
+          key={item.name}
+          href={item.link}
+          className="text-blue-500 mr-4 flex items-center"
+        >
           {" "}
           {item.name}{" "}
           <img

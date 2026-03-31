@@ -131,7 +131,9 @@ export default function Cart() {
           {isPaymentOption && <div>Payment option</div>}
         </div>
         <div className="flex-1">
-          <ProceedCheckoutComponent  handleProceedCheckout={handleProceedCheckout}/>
+          <ProceedCheckoutComponent
+            handleProceedCheckout={handleProceedCheckout}
+          />
         </div>
       </div>
     </div>

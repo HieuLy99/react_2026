@@ -2,10 +2,10 @@
 import React from "react";
 import { AvatarGroupCount } from "./ui/avatar";
 
-export default function StepsProcessComponent({cartPart , stepsList}: any) {
+export default function StepsProcessComponent({ cartPart, stepsList }: any) {
   return (
     <>
-      {stepsList.map((stepItem : any, index: number) => (
+      {stepsList.map((stepItem: any, index: number) => (
         <div key={index} className="flex items-center ">
           <AvatarGroupCount
             className="mr-2 ml-4"

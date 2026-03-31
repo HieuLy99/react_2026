@@ -90,11 +90,10 @@ export default function HomePage() {
 
 ## 🧠 Giải thích quan trọng
 
-queryKey
-["products", { q, page }]
+queryKey ["products", { q, page }]
 
-👉 React Query sẽ cache theo key này
-👉 Nếu Header và ProductGrid cùng dùng key giống nhau → chỉ gọi API 1 lần
+👉 React Query sẽ cache theo key này 👉 Nếu Header và ProductGrid cùng dùng key
+giống nhau → chỉ gọi API 1 lần
 
 keepPreviousData
 

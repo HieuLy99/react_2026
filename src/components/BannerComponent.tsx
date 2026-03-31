@@ -53,7 +53,7 @@ export default function BannerComponent() {
     setIndexProductShow((prev) =>
       prev === 0 ? fakeData.length - 1 : prev - 1,
     );
-  }
+  };
   return (
     <div>
       <div className="relative min-h-screen bg-black overflow-hidden">

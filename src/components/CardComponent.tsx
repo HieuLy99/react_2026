@@ -8,7 +8,6 @@ export default function CardComponent({
   product: Product;
   key: number;
 }) {
-
   const navigate = useNavigate();
 
   const displayStar = (rate: number) => {

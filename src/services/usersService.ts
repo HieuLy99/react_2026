@@ -7,7 +7,7 @@ export async function getUsers(): Promise<User[]> {
   return data;
 }
 
-// Get a single user by ID          
+// Get a single user by ID
 export async function getUserById(id: number): Promise<User> {
   const { data } = await https.get(`/users/${id}`);
   return data;
@@ -31,4 +31,4 @@ export async function updateUser(
 // Delete a user
 export async function deleteUser(id: number): Promise<void> {
   await https.delete(`/users/${id}`);
-}   
+}

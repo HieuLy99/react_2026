@@ -1,2 +1,1 @@
-hook 
-class
+hook class

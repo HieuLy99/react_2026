@@ -13,7 +13,7 @@ export default function ShoppingCartComponent({
   setOpen,
   cancel,
   handleCancelOrder,
-  open
+  open,
 }: any) {
   return (
     <div>
