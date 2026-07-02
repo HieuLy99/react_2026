@@ -2,7 +2,7 @@
 import type { Product } from "./page.type";
 import CardComponent from "../components/CardComponent";
 import { useProducts } from "../hook/useProducts";
-import BannerComponent from "../components/BannerComponent";
+// import BannerComponent from "../components/BannerComponent";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
   const navigate = useNavigate();
   return (
     <div>
-      <BannerComponent />
+      {/* <BannerComponent /> */}
       <div>Shop by Category</div>
       <div className="flex gap-4 justify-center items-center p-8">
         {categoryList?.map((category) => (
@@ -37,7 +37,7 @@ export default function Home() {
       <div>Featured Products</div>
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error loading products.</div>}
-      <div className="flex flex-wrap gap-4 justify-center items-center p-8">
+      <div className="flex flex-wrap gap-4 justify-center items-center px-50">
         {data?.map((product: Product) => (
           <CardComponent key={product.id} product={product} />
         ))}

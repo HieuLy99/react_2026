@@ -37,25 +37,27 @@ export default function CardComponent({
   return (
     <div
       key={key}
-      className="border p-4 rounded-lg shadow-md mb-4 mt-4 flex flex-col w-50"
+      className="border p-4 rounded-lg shadow-md mb-4 mt-4 flex flex-col w-50 h-90"
       onClick={() => {
         navigate(`/products?id=${product.id}`);
       }}
     >
-      <div className="w-full flex flex-col items-center h-50">
-        <div className=" w-30 overflow-hidden bg-black flex justify-center-safe align-items-center">
+      <div className="flex flex-col items-center pb-4 overflow-hidden">
+        <div className="h-40 rounded-sm overflow-hidden flex justify-center-safe align-items-center shadow-[0px_6px_24px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(0,0,0,0.08)]">
           <img
             src={product.image}
             alt={product.title}
-            className="object-cover mb-4"
+            className="object-contain mb-4 h-40"
           />
         </div>
       </div>
       <div>
-        <h3 className="w-30">{product.title}</h3>
+        <h3 className="text-sm">{product.title}</h3>
         {displayStar(product.rating.rate)}
-        <p>{product.rating.rate}</p>
-        <p>${product.price.toFixed(2)}</p>
+        <div className="flex gap-4 justify-between bg-none">
+          <p>{product.rating.rate}</p>
+          <p>${product.price.toFixed(2)}</p>
+        </div>
       </div>
     </div>
   );

@@ -63,6 +63,7 @@ export default function Cart() {
 
   const [searchParams] = useSearchParams();
   const cartPart = searchParams.get("part");
+  console.log('cartPart', cartPart, searchParams);
   console.log("searchParams", searchParams.get("part"));
   console.log("===> cartItems", cartItems);
 

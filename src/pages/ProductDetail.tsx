@@ -37,7 +37,7 @@ export default function ProductDetail() {
                 className="bg-blue-500 text-white px-4 py-2 rounded"
                 onClick={() => {
                   notify();
-                  navigate("/cart/shopping-cart");
+                  navigate("/cart?part=shopping-cart");
                 }}
               >
                 Add to Cart
