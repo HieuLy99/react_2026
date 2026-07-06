@@ -250,3 +250,103 @@ my-vite-app/
   "proseWrap": "always"
 }
 ```
+### redux : 
+[https://redux.js.org/tutorials/quick-start]
+
+install 
+```
+npm install @reduxjs/toolkit react-redux
+```
+if u have project run with react before u need to install and create provider for redux follow the docs !
+#### example:
+```
+src/
+ ├── app/
+ │    └── store.js
+ ├── features/
+ │    └── counter/
+ │         └── counterSlice.js
+```
+#app/store.js
+```
+import { configureStore } from '@reduxjs/toolkit'
+
+export default configureStore({
+  reducer: {}
+})
+```
+##src/features/counter/counterSlice.js
+```
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  value: 0,
+};
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState,
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload;
+    },
+  },
+});
+
+export const {
+  increment,
+  decrement,
+  incrementByAmount,
+} = counterSlice.actions;
+
+export default counterSlice.reducer;
+```
+
+wrapper app by provider
+```
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+import { Provider } from "react-redux";
+import { store } from "./app/store";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+```
+use redux on component :
+```
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "./features/counter/counterSlice";
+
+function Counter() {
+  const count = useSelector((state) => state.counter.value);
+
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <button onClick={() => dispatch(increment())}>
+        +
+      </button>
+
+      <button onClick={() => dispatch(decrement())}>
+        -
+      </button>
+    </div>
+  );
+}
+
+export default Counter;
+```

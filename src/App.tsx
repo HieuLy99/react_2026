@@ -8,6 +8,7 @@ import { ProductsParamsProvider } from "./context/ProductsParamsContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
+import Counter from "./store/testCount";
 const Home = lazy(() => import("./pages/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -26,6 +27,7 @@ function App() {
             }
           >
             <Route index element={<Home />} />
+            <Route path="/test" element={<Counter />} />
             {/* Group protected routes */}
             <Route path="/products" element={<ProductDetail />} />
             <Route element={<ProtectedRoute />}>
