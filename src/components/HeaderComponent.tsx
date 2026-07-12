@@ -20,7 +20,7 @@ export default function HeaderComponent() {
     { name: "Products", navigateTo: "/products" },
     { name: "About", navigateTo: "/about" },
     { name: "Contact", navigateTo: "/contact" },
-    { name: "Favorites", navigateTo: "/Favorites" },
+    { name: "Favorites", navigateTo: "/favorites" },
   ];
 
   const button = (name: string, navigateTo: string) => {

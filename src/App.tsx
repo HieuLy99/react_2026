@@ -12,6 +12,7 @@ import Counter from "./store/testCount";
 const Home = lazy(() => import("./pages/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const  Favorites = lazy(() => import("./pages/Favorites"));
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/test" element={<Counter />} />
             {/* Group protected routes */}
             <Route path="/products" element={<ProductDetail />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route element={<ProtectedRoute />}>
               <Route path="dashboard/*" element={<Dashboard />} />
               <Route path="cart/" element={<Cart />}>

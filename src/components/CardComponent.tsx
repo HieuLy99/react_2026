@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import type { Product } from "../pages/page.type";
+import { useDispatch } from "react-redux";
+import { addToFavorites } from "@/features/listFavorites";
 
 export default function CardComponent({
   product,
@@ -9,6 +11,7 @@ export default function CardComponent({
   key: number;
 }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const displayStar = (rate: number) => {
     const fullStars = Math.round(rate);
@@ -37,12 +40,24 @@ export default function CardComponent({
   return (
     <div
       key={key}
-      className="border p-4 rounded-lg shadow-md mb-4 mt-4 flex flex-col w-50 h-90"
-      onClick={() => {
-        navigate(`/products?id=${product.id}`);
-      }}
+      className="border p-4 rounded-lg shadow-md mb-4 mt-4 flex flex-col w-50 h-90 static"
     >
-      <div className="flex flex-col items-center pb-4 overflow-hidden">
+      <div className="absolute z-999">
+        <button
+          onClick={() => {
+            console.log("alo", product);
+            dispatch(addToFavorites(product));
+          }}
+        >
+          like
+        </button>
+      </div>
+      <div
+        className="flex flex-col items-center pb-4 overflow-hidden"
+        onClick={() => {
+          navigate(`/products?id=${product.id}`);
+        }}
+      >
         <div className="h-40 rounded-sm overflow-hidden flex justify-center-safe align-items-center shadow-[0px_6px_24px_rgba(0,0,0,0.05),0px_0px_0px_1px_rgba(0,0,0,0.08)]">
           <img
             src={product.image}
