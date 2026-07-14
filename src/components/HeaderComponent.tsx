@@ -26,7 +26,7 @@ export default function HeaderComponent() {
   const button = (name: string, navigateTo: string) => {
     return (
       <button
-        className="flex-1 text-blue-600"
+        className="flex-1 text-base font-extralight cursor-pointer hover:font-light hover:text-lg transition-colors duration-300"
         onClick={() => navigate(navigateTo)}
       >
         {name}
@@ -47,25 +47,32 @@ export default function HeaderComponent() {
 
   console.log("===> 123", data, isLoading, isError);
   return (
-    <div className="flex w-full">
-      <div className="flex-1 ">Face store </div>
+    <div className="flex w-full sticky top-0 ">
+      <div className="flex flex-1 font-[1000] align-middle items-center text-2xl tracking-tighter cursor-pointer pl-8"
+        onClick={() => navigate("/")}
+      >
+        FAKESTORE<span className="text-[#E66C4E]">.</span>{" "}
+      </div>
       <div className="flex flex-2 items-center gap-4  ">
         {listButton.map((item) => button(item.name, item.navigateTo))}
-        <div>
+        <div className="relative">
           <input
+            className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             placeholder="Search..."
           />
-          {filteredProducts?.map((p) => (
-            <div
-              className="border-solid border-2 cursor-pointer "
-              onClick={() => handleViewDetailProduct(p.id)}
-              key={p.id}
-            >
-              {p.title}
-            </div>
-          ))}
+          <div className="absolute  bg-white w-full max-h-60 overflow-y-auto">
+            {filteredProducts?.map((p) => (
+              <div
+                className="border-solid border-2 cursor-pointer  "
+                onClick={() => handleViewDetailProduct(p.id)}
+                key={p.id}
+              >
+                {p.title}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="flex-1 flex flex-row justify-end content-center gap-2">

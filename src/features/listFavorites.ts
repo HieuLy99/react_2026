@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface FavoriteProduct {
-  id: string;
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -20,18 +20,16 @@ const listFavoritesSlice = createSlice({
   name: "listFavorites",
   initialState: initialFavoritesProduct,
   reducers: {
-    addToFavorites: (state, action) => {
+    addToFavorites: (state, action: PayloadAction<FavoriteProduct>) => {
       const product = action.payload;
-      const existingProduct = state.find(
-        (item: FavoriteProduct) => item.id === product.id,
-      );
+      const existingProduct = state.find((item) => item.id === product.id);
       if (!existingProduct) {
         state.push(product);
       }
     },
-    removeFromFavorites: (state, action) => {
+    removeFromFavorites: (state, action: PayloadAction<number>) => {
       const productId = action.payload;
-      return state.filter((item: FavoriteProduct) => item.id !== productId);
+      return state.filter((item) => item.id !== productId);
     },
   },
 });

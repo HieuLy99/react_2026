@@ -350,3 +350,64 @@ function Counter() {
 
 export default Counter;
 ```
+lưu trữ state :
+```
+npm i redux-persist
+```
+cấu hình store 
+```
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // localStorage
+import { combineReducers } from 'redux';
+import cartReducer from './cartSlice';
+import userReducer from './userSlice';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['cart'], // chỉ lưu slice 'cart', bỏ 'user'
+  // blacklist: ['user'], // hoặc ngược lại: lưu tất cả trừ 'user'
+};
+
+const rootReducer = combineReducers({
+  cart: cartReducer,
+  user: userReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // bỏ qua cảnh báo với các action nội bộ của redux-persist
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);
+
+```
+Bọc app bằng PersistGate
+```
+// index.js / main.jsx
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store';
+
+root.render(
+  <Provider store={store}>
+    <PersistGate loading={<div>Đang tải...</div>} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>
+);
+```
+Nếu muốn dùng sessionStorage (mất khi đóng tab) thay vì localStorage:
+```
+import storageSession from 'redux-persist/lib/storage/session';
+```
