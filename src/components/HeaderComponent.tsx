@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import type { Product } from "../pages/page.type";
 import { useProducts } from "../hook/useProducts";
+import { useScrollPosition } from "../hook/useScrollPosition";
 import { useMemo, useState } from "react";
 import shoppingCard from "../assets/shoppingCard.svg";
 import acc from "../assets/acc.svg";
@@ -15,6 +16,8 @@ export default function HeaderComponent() {
   }: { data: Product[] | undefined; isLoading: any; isError: any } =
     useProducts();
   const [searchText, setSearchText] = useState("");
+  const { isScrolled } = useScrollPosition(50);
+  console.log(isScrolled, 'isScrolled');
   const listButton = [
     { name: "Home", navigateTo: "/" },
     { name: "Products", navigateTo: "/products" },
@@ -47,13 +50,19 @@ export default function HeaderComponent() {
 
   console.log("===> 123", data, isLoading, isError);
   return (
-    <div className="flex w-full sticky top-0 ">
-      <div className="flex flex-1 font-[1000] align-middle items-center text-2xl tracking-tighter cursor-pointer pl-8"
+    <div
+      className={`flex w-full sticky top-0 z-50 transition-colors duration-300 ${
+        isScrolled ? "bg-black/90 backdrop-blur-sm shadow-md" : ""
+      }`}
+    >
+      <div
+        className="flex flex-1 font-[1000] align-middle items-center
+        text-2xl tracking-tighter cursor-pointer pl-8"
         onClick={() => navigate("/")}
       >
         FAKESTORE<span className="text-[#E66C4E]">.</span>{" "}
       </div>
-      <div className="flex flex-2 items-center gap-4  ">
+      <div className="flex flex-2 items-center gap-4  text-[#EFEFEF]">
         {listButton.map((item) => button(item.name, item.navigateTo))}
         <div className="relative">
           <input
@@ -62,7 +71,7 @@ export default function HeaderComponent() {
             onChange={(e) => setSearchText(e.target.value)}
             placeholder="Search..."
           />
-          <div className="absolute  bg-white w-full max-h-60 overflow-y-auto">
+          <div className="absolute w-full max-h-60 overflow-y-auto">
             {filteredProducts?.map((p) => (
               <div
                 className="border-solid border-2 cursor-pointer  "

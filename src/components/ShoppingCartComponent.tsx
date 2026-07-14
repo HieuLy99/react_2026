@@ -24,7 +24,7 @@ export default function ShoppingCartComponent({
       </div>
       <div>
         {cartItems.length === 0 ? (
-          <div className="text-center py-8 items-center flex flex-rol gap-4 justify-center p-4 mb-4 bg-white rounded-lg shadow-lg ">
+          <div className="text-center py-8 items-center flex flex-rol gap-4 justify-center p-4 mb-4  rounded-lg shadow-lg ">
             <img
               src={noSymbol}
               alt=""

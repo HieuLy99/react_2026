@@ -54,7 +54,7 @@ export default function CardDetailComponent({
   return (
     <div
       className={cn(
-        "border p-4 rounded-lg shadow-md mb-4 mt-4",
+        "border p-4 rounded-lg shadow-md mb-4 mt-4 border-y border-[#E66C4E] cursor-pointer",
         "flex flex-col w-50 h-80 relative font-extralight",
       )}
     >

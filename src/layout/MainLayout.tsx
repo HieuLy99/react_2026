@@ -5,7 +5,7 @@ import FooterComponent from "../components/FooterComponent";
 export default function MainLayout() {
   return (
     <div className="min-h-screen flex flex-col w-full">
-      <header className=" p-4 w-full sticky top-0 bg-white z-9999 shadow-xs mb-4">
+      <header className=" p-4 w-full sticky top-0 z-9999 shadow-xs">
         <HeaderComponent />
       </header>
 
@@ -13,7 +13,7 @@ export default function MainLayout() {
         <Outlet />
       </main>
 
-      <footer className="bg-gray-200 p-4 text-center">
+      <footer className=" p-4 text-center">
         <FooterComponent />
       </footer>
     </div>

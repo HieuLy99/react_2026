@@ -5,7 +5,7 @@ export default function CardBlockComponent({ item, handleRemoveCart }: any) {
   return (
     <div
       key={item.id}
-      className="cart-item flex  p-4 mb-4 bg-white rounded-lg shadow-lg  font-light"
+      className="cart-item flex  p-4 mb-4 rounded-lg shadow-lg  font-light"
     >
       <div className="flex-3">
         <div className="font-medium">

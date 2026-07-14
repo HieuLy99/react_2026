@@ -6,7 +6,7 @@ export default function ProceedCheckoutComponent({
 }: any) {
   return (
     <>
-      <div className="proced-block border border-indigo-600 p-4 mb-4 bg-white rounded-lg shadow-lg ">
+      <div className="proced-block border border-indigo-600 p-4 mb-4  rounded-lg shadow-lg ">
         <div className="border p-4 mb-4 rounded-md">Proceed to checkout</div>
         <div className="proced-block-content border p-4 rounded-md">
           <div>Order summary</div>

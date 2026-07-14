@@ -63,7 +63,7 @@ export default function Cart() {
 
   const [searchParams] = useSearchParams();
   const cartPart = searchParams.get("part");
-  console.log('cartPart', cartPart, searchParams);
+  console.log("cartPart", cartPart, searchParams);
   console.log("searchParams", searchParams.get("part"));
   console.log("===> cartItems", cartItems);
 
@@ -92,7 +92,7 @@ export default function Cart() {
       </div>
       <div className="flex gap-x-8">
         <div className="flex-3  ">
-          <div className="shopping-cart-block bg-white p-8 rounded-lg mb-8">
+          <div className="shopping-cart-block  p-8 rounded-lg mb-8">
             <div>{handleReturnNamePart(cartPart)}</div>
             <hr className="mt-2 mb-1" />
             {isShoppingCart && (
@@ -116,7 +116,7 @@ export default function Cart() {
                   {mockCartSuggest.map((item) => (
                     <div
                       key={item.id}
-                      className="cart-item flex border border-indigo-600 p-4 mb-4 bg-white rounded-lg shadow-lg "
+                      className="cart-item flex border border-indigo-600 p-4 mb-4  rounded-lg shadow-lg "
                     >
                       <div className="flex-1">{item.productName}</div>
                       <div className="flex-1">{item.quantity}</div>
